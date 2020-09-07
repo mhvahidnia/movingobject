@@ -100,7 +100,8 @@ for s=2:length(H)
             
         elseif (t1==tL1) && (t1<tK1)
             if (t2==tL2) && (t2<=tK1)
-                headK=headK.Next;
+               % headK=headK.Next;
+               headL=headL.Next;
             elseif (t2==tK1) && (t2<tL2)
                 if (xL1==xL2)
                     headL.Data=[xL1 t2];
@@ -116,6 +117,13 @@ for s=2:length(H)
         elseif (t1==tL1) && (t1==tK1)
             
             KL = [xK1*tK2-xK2*tK1,xL1*tL2-xL2*tL1]/[tK2-tK1,tL2-tL1;-(xK2-xK1),-(xL2-xL1)];
+            
+                    
+            % **********************************Rounding*************************************************************
+            KL=roundn(KL,-3);
+            %******************************************************************************************************
+            
+            
             if (KL(1,1)==Inf) || (KL(1,1)==-Inf) || (KL(1,2)==Inf) || (KL(1,2)==-Inf)
                 res='Parallel';
             elseif isnan(KL(1,1)) || isnan(KL(1,2))
@@ -195,9 +203,9 @@ for s=2:length(H)
                 X=xK1+(xK2-xK1)*(t2-tK1)/(tK2-tK1);
                 headK.Data=[X t2];
             end
-        elseif (t1==tK1) && (t1>tL1)
+        elseif (t1==tK1) && (t1>tL1)  %??????? (t1>tL2) ?????????????????????????????????
             rel='EXN';
-        elseif (t1==tL1) && (t1>tK1)
+        elseif (t1==tL1) && (t1>tK1)  %??????? (t1>tK2) ?????????????????????????????????
             rel='EXNi';
         end
         

@@ -26,10 +26,10 @@ if (p<r)
     [L, InList, OutList]=PathCombination(L, InList, OutList, p, q);
     [L, InList, OutList]=PathCombination(L, InList, OutList, q+1, r);
     
-
     
-        %q
-        %q+1
+    
+    %q
+    %q+1
     %[isCombinable, combineResult]=Combinable( L{2,L{3,q}} ,L{2,L{3,q+1}} );
     if (strcmp(L{2,q},'')==1) % if current relation is null
         rel1=L{2,OutList(q,1)};
@@ -67,7 +67,7 @@ if (p<r)
             L{2,q}='';
             L{2,q+1}=combineResult;
             OutList(q,1)=q+1;
-            InList(q+1,1)=InList(q+1,1)+1;
+            InList(q+1,1)=InList(q+1,1)+1; % InList(:,1) numerator of input items
             InList(q+1,InList(q+1,1)+1)=q;
             if InList(q,1)>0
                 for t=1:InList(q,1)
@@ -110,22 +110,22 @@ if (p<r)
             end
         end
         
-%         if (q_plus_c==1)
-%             L{4,OutList(q+1,1)}=combineResult;
-%             OutList(q,1)=OutList(q+1,1);
-%         elseif (q_plus_c==0)
-%             L{4,q+1}=combineResult;
-%             OutList(q,1)=q+1;
-%         end
-%         L{4,L{3,q}}='';
-%         L{4,L{3,q+1}}=combineResult;
-%         OutList(q,1)=
-%         %L{4,L{3,q}}=combineResult;
-%         L{2,L{3,q+1}}=L{1,L{3,q}};
-%         L{3,L{3,q}}=L{1,L{3,q+1}};
-%         L{3,L{2,q}}=L{1,L{3,q+1}};
-%         L{3,L{2,L{2,q}}}=L{1,L{3,q+1}};
-
+        %         if (q_plus_c==1)
+        %             L{4,OutList(q+1,1)}=combineResult;
+        %             OutList(q,1)=OutList(q+1,1);
+        %         elseif (q_plus_c==0)
+        %             L{4,q+1}=combineResult;
+        %             OutList(q,1)=q+1;
+        %         end
+        %         L{4,L{3,q}}='';
+        %         L{4,L{3,q+1}}=combineResult;
+        %         OutList(q,1)=
+        %         %L{4,L{3,q}}=combineResult;
+        %         L{2,L{3,q+1}}=L{1,L{3,q}};
+        %         L{3,L{3,q}}=L{1,L{3,q+1}};
+        %         L{3,L{2,q}}=L{1,L{3,q+1}};
+        %         L{3,L{2,L{2,q}}}=L{1,L{3,q+1}};
+        
         %combineResult
     end
 end
